@@ -91,7 +91,7 @@ jobs:
           echo "imagename=${{ steps.kind-registry.outputs.local-registry }}/testapp" >> "$GITHUB_ENV"
       # Runs Helm to create manifest files
       - name: Bake deployment
-        uses: azure/k8s-bake@0191a5ae5126cfe61885d9bd46511caa8e9a9550 # v4.1.0
+        uses: azure/k8s-bake@bf8bfd33b007edea820fe80983239bca24012239 # v4.1.1
         with:
           renderEngine: "helm"
           helmChart: ./langtest/charts
@@ -111,7 +111,7 @@ jobs:
           context: ./langtest/
       # Deploys application based on manifest files from previous step
       - name: Deploy application
-        uses: Azure/k8s-deploy@c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e # v6
+        uses: Azure/k8s-deploy@51ca02a8b7225fbd0924aac359c5b336a5f1e5b4 # v7.0.0
         continue-on-error: true
         id: deploy
         with:
@@ -262,7 +262,7 @@ jobs:
         run: |
           echo "imagename=${{ steps.kind-registry.outputs.local-registry }}/testapp" >> "$GITHUB_ENV"
       - name: Bake deployment
-        uses: azure/k8s-bake@0191a5ae5126cfe61885d9bd46511caa8e9a9550 # v4.1.0
+        uses: azure/k8s-bake@bf8bfd33b007edea820fe80983239bca24012239 # v4.1.1
         id: bake
         with:
           renderEngine: "kustomize"
@@ -276,7 +276,7 @@ jobs:
           context: ./langtest/
       # Deploys application based on manifest files from previous step
       - name: Deploy application
-        uses: Azure/k8s-deploy@c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e # v6
+        uses: Azure/k8s-deploy@51ca02a8b7225fbd0924aac359c5b336a5f1e5b4 # v7.0.0
         continue-on-error: true
         id: deploy
         with:

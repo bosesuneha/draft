@@ -156,7 +156,7 @@ jobs:
 
       # Runs Kustomize to create manifest files
       - name: Bake deployment
-        uses: azure/k8s-bake@v3
+        uses: azure/k8s-bake@v4
         with:
           renderEngine: "kustomize"
           kustomizationPath: ${{ env.KUSTOMIZE_PATH }}
@@ -165,7 +165,7 @@ jobs:
 
       # Deploys application based on manifest files from previous step
       - name: Deploy application
-        uses: Azure/k8s-deploy@v5
+        uses: Azure/k8s-deploy@v7
         with:
           action: deploy
           manifests: ${{ steps.bake.outputs.manifestsBundle }}
